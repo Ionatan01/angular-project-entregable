@@ -1,0 +1,21 @@
+<div class="container">
+    <h1>Artworks List </h1>
+    <div class="row">
+        @for (artwork of cuadros | artworkFilter:filter; track artwork.id) {
+            <div class="col">
+              <app-artwork [artwork]="artwork" (likeChanged)="toggleLike($event, artwork)"></app-artwork>
+            </div>
+        }
+    </div>
+    <table class="table">
+        <tbody>
+          @for (artwork of cuadros; track artwork.id) {
+                <tr app-artwork-row [artwork]="artwork"></tr>
+          }
+          </tbody>
+      </table>
+</div>
+<app-pagination
+  [totalPages]="totalPages"
+  [currentPage]="currentPage"
+></app-pagination>

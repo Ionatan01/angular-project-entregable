@@ -1,0 +1,28 @@
+.pagination-component {
+    width: 400px;
+    background-color: #ddd;
+    border: 1px solid #000;
+    border-radius: 4px;
+    position: fixed;
+    right: calc(50vw - 200px);
+    bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.pagination-component .top {
+    margin-bottom: 10px;
+}
+
+.pagination-component .top >  * {
+    margin-right: 10px;
+}
+
+.pagination-component input,
+.pagination-component button {
+    border-radius: 4px;
+    outline: none;
+    border: 1px solid black;
+}

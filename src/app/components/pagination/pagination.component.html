@@ -1,0 +1,8 @@
+<div class="pagination-component">
+    <div class="flex-container top"><button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>Current page: {{ currentPage }} / {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button></div>
+    <div class="flex-container bottom"><div>Go to page: <input type="text" class="input" placeholder="page number" (change)="inputChanged($event)" /></div></div>
+    
+    
+</div>
