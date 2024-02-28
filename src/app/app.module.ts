@@ -16,6 +16,7 @@ import { PaginationComponentComponent } from './components/pagination-component/
 import { ArtworkFilterPipe } from './pipes/artwork-filter.pipe';
 import { RegisterComponent } from './components/register/register.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { ArtworkListFavoritesComponent } from './components/artwork-list-favorites/artwork-list-favorites.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     PaginationComponentComponent,
     ArtworkFilterPipe,
     RegisterComponent,
-    PaginationComponent
+    PaginationComponent,
+    ArtworkListFavoritesComponent
   ],
   imports: [
     ArtworkComponent,

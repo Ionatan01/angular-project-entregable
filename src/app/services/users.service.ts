@@ -128,6 +128,21 @@ export class UsersService {
 
     promiseFavorites.then(()=>this.getFavorites(data.session.user.id));
   }
+  async removeFavorite(artwork_id:string): Promise<any>{
+    console.log('removefavorite', artwork_id);
+
+    let {data,error} = await this.supaClient.auth.getSession();
+    let promiseFavorites: Promise<boolean> = this.supaClient
+    .from('favorites')
+    .delete()
+    .match({
+      uid: data.session.user.id,
+      artwork_id: artwork_id
+    });
+
+
+    promiseFavorites.then(()=>this.getFavorites(data.session.user.id));
+  }
   async setavatar_url(uid:string){
     console.log(uid);
     await this.supaClient

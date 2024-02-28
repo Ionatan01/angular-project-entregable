@@ -35,6 +35,8 @@ export class ArtworkListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     // this.artService.getArtWorks().subscribe((artworkList: IArtwork[]) => this.cuadros = artworkList);
+
+    console.log("init");
     this.subPagination = this.route.params.subscribe((page) => {
       this.handleRouteParams(page);
       if (!this.usersService.getUserId()) {
@@ -60,6 +62,8 @@ export class ArtworkListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    console.log("destroy");
+    
     this.subArt.unsubscribe();
     this.subFilter.unsubscribe();
     this.subPagination.unsubscribe();
@@ -68,8 +72,13 @@ export class ArtworkListComponent implements OnInit, OnDestroy {
   toggleLike($event: boolean, artwork: IArtwork) {
     if (this.usersService.getUserId()) {
       console.log($event, artwork);
+      if (artwork.like === true) {
+        this.usersService.removeFavorite(artwork.id + "");
+      } else {
+        this.usersService.setFavorite(artwork.id + "");
+        
+      }
       artwork.like = !artwork.like;
-      this.usersService.setFavorite(artwork.id + "");
     }
   }
 
@@ -106,6 +115,8 @@ export class ArtworkListComponent implements OnInit, OnDestroy {
       .pipe(
         tap((artworksList: string[]) => {
           favorites = artworksList;
+          
+          
         }),
         switchMap(() => {
           return this.artService.filterArtWorksWithPagination(currentPage,filter);
@@ -127,4 +138,6 @@ export class ArtworkListComponent implements OnInit, OnDestroy {
         }
       });
   }
+
+
 }
